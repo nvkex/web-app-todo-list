@@ -14,15 +14,31 @@ const generateTemplate = task => {
 addForm.addEventListener('submit',(e) => {
     e.preventDefault();
     
-    //Get the string entered by user in the input box
-    //Remove white spaces entered by the user
+    /**
+     * Get the string entered by user in the input box
+     * Remove white spaces entered by the user
+     */
     const todo = addForm.add.value.trim();
 
-    //Check for empty string
-    //Do nothing when user sumbits an empty string
+    /**
+     * Check for empty string
+     * Do nothing when user sumbits an empty string
+     */
     if(todo.length!=0)
         generateTemplate(todo);
 
         //clear the input boxes
         addForm.reset();
+});
+
+/**
+ * Deleting a task from list
+ * Listen to click event inside ul
+ * If the clicked object contains 'delete' class
+ * Remove the parent Element i.e, the list the was to be deleted.
+ */
+list.addEventListener('click', e => {
+    if(e.target.classList.contains('delete')){
+        e.target.parentElement.remove();
+    }
 });
